@@ -95,9 +95,12 @@ public class ResepController {
             @PathVariable(value = "noResep") String noResep,
             Model model){
         ResepModel resep = resepService.getResepByNomorResep(noResep);
-        resepService.getResepList().remove(resep);
         model.addAttribute("noResep", noResep);
-        return "delete-resep";
+        if(resep != null){
+            resepService.getResepList().remove(resep);
+            return "delete-resep";
+        }
+        return "delete-resep-gagal";
     }
 
 }

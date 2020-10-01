@@ -65,3 +65,41 @@ Spring digunakan juga untuk mengembangkan aplikasi berskala enterprise, akses da
 ### What I did not understand :weary: :weary: :weary:
 - [ ] Kenapa saya harus belajar APAP?
 - [ ] Kenapa APAP susah dimengerti?
+
+
+## Tutorial 2 
+### What I have learned today :computer:
+
+**1. Cobalah untuk menambahkan sebuah resep dengan mengakses link berikut http://localhost:8080/resep/add?noResep=1&namaDokter=Papa%20APAP&namaPasien=Quanta%20Fasilkom&catatan=Semangat, Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi**
+
+Kita akan mendapatkan error yang disebabkan oleh ResepController yang mencoba untuk mengakses view "add-resep" yang belum dibuat. Hal ini dapat diselesaikan dengen membuat file add-resep.html pada folder template yang akan menerima atribut model dari Controller.
+
+
+**2. Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat**
+
+Anotasi @Autowired merupakan implementasi dari konsep Dependency Injection. Dengan @Autowired, kita tidak perlu setter dan constructor injection karena semua field/property yang memiliki anotasi @Autowired akan diisikan oleh Spring dengan object bertipe data sesuai.
+
+
+**3. Cobalah untuk menambahkan sebuah resep dengan mengakses http://localhost:8080/resep/add?noResep=1&namaDokter=Papa%20APAP&namaPasien=Quanta%20Fasilkom. Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi**
+
+Ketika saya mencoba mengakses link di atas, saya mendapatkan halaman bertuliskan Whitelabel Error beserta penjelasannya bahwa Whitelabel Error ini disebabkan karena kurangnya parameter "catatan" pada link tersebut. Pada ResepController, dapat dilihat bahwa atribut required pada parameter "catatan" bernilai True sehingga jika link yang kita coba akses tidak terdapat atribut "catatan", maka akan terjadi error.
+
+
+**4. Jika Papa APAP ingin melihat resep untuk pasien yang bernama Quanta, link apa yang harus diakses?**
+
+Jika berasumsi Papa APAP hanya mengetahui nama pasien, maka untuk melihat resepnya harus mengakses [http://localhost:8080/resep/viewall](http://localhost:8080/resep/viewall). Kemudian jika sudah tau nomor resepnya, maka Papa APAP dapat langsung mengakses [http://localhost:8080/resep/view?noResep=1](http://localhost:8080/resep/view?noResep=1).
+
+*pasien bernama Quanta memiliki nomor resep 1
+
+
+**5. Tambahkan 1 contoh resep lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/resep/viewall , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.**
+
+Berikut link yang saya tambahkan: [http://localhost:8080/resep/add?noResep=2&namaDokter=BTS&namaPasien=Kim%20Seokjin&catatan=Borahae](http://localhost:8080/resep/add?noResep=2&namaDokter=BTS&namaPasien=Kim%20Seokjin&catatan=Borahae)
+
+[Screenshot 1](https://ibb.co/YXrzxHw)
+
+[Screenshot 2](https://ibb.co/D7SJQDj)
+
+
+
+
