@@ -62,9 +62,13 @@ public class ResepController {
 
         // Add variabel  ResepModel ke 'resep' untuk dirender pada thymeleaf
         model.addAttribute("resep", resep);
+        model.addAttribute("noResep", noResep);
 
         // Return view template yang ingin digunakan
-        return "view-resep";
+        if(resep != null) {
+            return "view-resep";
+        }
+        return "resep-gagal";
     }
 
     // Latihan nomor 1
@@ -84,9 +88,12 @@ public class ResepController {
             @PathVariable(value = "catatan") String catatan,
             Model model){
         ResepModel resep = resepService.getResepByNomorResep(noResep);
-        resep.setCatatan(catatan);
         model.addAttribute("noResep", noResep);
-        return "edit-resep";
+        if(resep != null) {
+            resep.setCatatan(catatan);
+            return "edit-resep";
+        }
+        return "resep-gagal";
     }
 
     // Latihan nomor 3
@@ -100,7 +107,7 @@ public class ResepController {
             resepService.getResepList().remove(resep);
             return "delete-resep";
         }
-        return "delete-resep-gagal";
+        return "resep-gagal";
     }
 
 }

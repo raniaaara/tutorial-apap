@@ -101,5 +101,9 @@ Berikut link yang saya tambahkan: [http://localhost:8080/resep/add?noResep=2&nam
 [Screenshot 2](https://ibb.co/D7SJQDj)
 
 
+### What I did not understand :weary: :weary: :weary:
+- [ ] masih bingung gunanya service
+
+
 
 
