@@ -5,11 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Data Obat Succeed</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
 <h2 th:text = "'Data obat dengan id ' + ${id}+ ' berhasil diubah.'" ></h2>
-<a href="/resep/viewall">Kembali</a>
+<a href="/resep/viewall" class="btn btn-outline-success">Kembali</a>
 </body>
 
 </html>
