@@ -105,5 +105,37 @@ Berikut link yang saya tambahkan: [http://localhost:8080/resep/add?noResep=2&nam
 - [ ] masih bingung gunanya service
 
 
+## Tutorial 3
+### What I have learned today :computer:
+
+**1. Pada class ObatDb, terdapat method findByNoResep, apakah kegunaan dari method tersebut?**
+
+Kegunaan dari method findByNoResep adalah untuk mencari data resep pada database berdasarkan NoResep yang telah diberikan. Method ini dibuat secara otomatis oleh Springboot karena saat Spring Data membuat @Repository baru, ia akan menganalisis semua method yang telah didefinisikan di interface kemudian mencoba untuk menghasilkan query pada method terkait.
 
 
+**2. Pada class ResepController, jelaskan perbedaan method addResepFormPage dan addResepSubmit?**
+
+Method addResepFormPage digunakan untuk mengembalikan halaman pendaftaran resep baru dan dipanggil saat browser melakukan request untuk mengakses /resep/add. Sedangkan method addResepSubmit dipanggil saat browser melakukan POST method untuk men-submit data resep tersebut. Pada HTML form-add-resep, method akan mengambil data yang telah dimasukkan, yang kemudian akan dimasukkan ke dalam database oleh method addResepSubmit.
+
+
+**3. Jelaskan kegunaan dari JPA Repository!**
+
+JPA (Java Persistence API) Repository digunakan untuk memasukkan objek-objek Java ke dalam relational database (SQL). Modul ini akan secara otomatis melakukan pemetaan dari Java class ke dalam bentuk tabel relasional. Terdapat dua bagian dalam JPA, yaitu sebuah mapping subsystem untuk melakukan mapping antara class-class ke relational table dan sebuah API EntityManager untuk mengakses objek-objek, mendefinisikan dan mengeksekusikan query, dan lainnya. Dengan menggunakan JPA Repository, akan lebih mudah bagi pengembang untuk mengelola objek-objek Java yang perlu kita masukkan ke dalam database beserta dengan ketentuan-ketentuannya.
+
+
+**4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara ResepModel dan ObatModel dibuat?**
+
+Pada ResepModel dan ObatModel terdapat @OneToMany dan @ManyToOne yang menunjukkan relasi model-model tersebut.  ResepModel menggunakan anotasi @OneToMany untuk mendefinisikan relasinya dengan tabel Obat diikuti dengan "List<ObjectModel> listObat" sebagai implementasinya dengan Java Objects. Sedangkan ObatModel menggunakan anotasi @ManyToOne untuk mendefinisikan relasinya dengan tabel Resep diikuti dengan "ResepModel resepmodel" sebagai referensinya dengan Java Objects. Dengan mendefinisikan relasi untuk kedua model ini, database akan lebih mudah dalam mengelola objek-objek yang ada.
+
+
+**5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER!**
+
+FetchType.LAZY memuat seluruh data Java objects yang di-fetch saat kita membutuhkan atau saat kita memanggil datanya (LAZY). Biasanya, FetchType ini digunakan untuk relasi one-to-many atau many-to-many. 
+
+CascadeType.ALL digunakan agar segala (ALL) perubahan yang terjadi pada suatu entity akan terjadi juga pada entity seluruh child-nya. Perubahan dapat terjadi karena DELETE, UPDATE, dan sebagainya.
+
+FetchType.EAGER memuat seluruh data Java objects yang di-fetch secara langsung, jadi ia melakukan fetch seawal mungkin. Biasanya, FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
+
+
+### What I did not understand :weary: :weary: :weary:
+- [ ]
