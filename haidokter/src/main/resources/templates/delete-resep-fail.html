@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar('Delete Resep Failed')"></nav>
 <h2 th:text = "'Resep dengan nomor resep ' + ${noResep}+ ' tidak berhasil dihapus karena memiliki Obat.'" ></h2>
 <a href="/resep/viewall" class="btn btn-outline-success">Kembali</a>
 </body>

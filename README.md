@@ -173,6 +173,10 @@ Pada dasarnya, penggunaan * dan $ sama-sama digunakan untuk melakukan variable e
 
 **4. Bagaimana kamu menyelesaikan latihan nomor 3?**
 
+Awalnya saya menambahkan atribut th:text pada elemen HTML dengan expression ${pageName}. Kemudian pada HTML yang mengimplementasikan fragment tersebut saya mengganti pageName dengan title halaman (home, add resep,dll) pada pemanggilan fragment navbar. 
+
+Contoh:
+<nav th:replace="fragments/fragment :: navbar('Delete Obat')"></nav>
 
 
 ### What I did not understand :weary: :weary: :weary:
