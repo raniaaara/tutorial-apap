@@ -168,7 +168,7 @@ Artinya, pada tag form tersebut kita menyisipkan th:object="${resep}" sebagai ta
 
 **3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?**
 
-Pada dasarnya, penggunaan * dan $ sama-sama digunakan untuk melakukan variable expression. Namun terdapat perbedaan, yaitu * digunakan ketika melakukan expression pada selected object, bukan keseluruhan dari variable maps. Selama tidak ada object yang, maka * dan $ digunakan untuk hal yang sama.
+Pada dasarnya, penggunaan * dan $ sama-sama digunakan untuk melakukan variable expression. Perbedannya terdapat jika * digunakan ketika melakukan expression pada selected object, bukan keseluruhan dari variable maps. Selama tidak ada object yang dipilih, maka * dan $ digunakan untuk hal yang sama.
 
 
 **4. Bagaimana kamu menyelesaikan latihan nomor 3?**
