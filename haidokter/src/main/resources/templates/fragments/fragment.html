@@ -17,15 +17,11 @@
         <script th:src="@{/js/bootstrap.min.js}"></script>
     </head>
 
-
 <body>
-<nav
-        th:fragment="navbar"
-        class="navbar navbar-expand-lg navbar-light bg-light"
->
-    <a class="navbar-brand font-weight-bold text-success" href="#"
-    >HaiDokter!</a
-    >
+<nav th:fragment="navbar(NamaPage)"
+     class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand font-weight-bold text-success" href="#">HaiDokter!</a>
     <button
             class="navbar-toggler"
             type="button"
@@ -38,9 +34,14 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto navbar navbar-default">
             <a class="nav-item nav-link active text-secondary" th:href="@{/}">
                 Home<span class="sr-only">(current)</span>
+            </a>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <a th:text="${NamaPage}" class="nav-item nav-link active text-secondary" th:href="@{/}">
+                <span class="sr-only">(current)</span>
             </a>
         </ul>
     </div>

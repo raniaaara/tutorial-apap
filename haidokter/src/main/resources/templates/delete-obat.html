@@ -7,7 +7,7 @@
 
 </head>
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar('Delete Obat')"></nav>
     <div class="container-fluid">
         <h3 th:text="${obatCount} + ' Obat telah berhasil dihapus'"></h3>
         <a th:href="@{/}" class="btn btn-outline-success">Kembali ke Home</a>

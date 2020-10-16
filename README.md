@@ -145,7 +145,7 @@ FetchType.EAGER memuat seluruh data Java objects yang di-fetch secara langsung, 
 
 **1. Jelaskan perbedaan th:include dan th:replace!**
 
-Perbedaannya akan terlihat pada peletakkan konten yang ingin kita gunakan:
+th:include dan th:replace merupakan salah dua bentuk dari host tag, di mana ke dua host tag ini akan mengimplementasikan bentuk fragment yang disediakan oleh Thymeleaf. Fragment adalah sebuah reuseable class yang mengimplement beberapa fitur sebuah Activity.
 
 Saat kita menggunakan include:
 
@@ -162,8 +162,8 @@ Thymeleaf dapat meng-include beberapa bagian dari halaman lain sebagai fragment 
 
 th:object merupakan atribut yang menyimpan command object (bentuk dari bean object), yaitu bentuk representasi dari object yang berada pada backend. Dengan kata lain, th:object mereferensikan Model yang akan merepresentasikan state dari form yang dibuat. Contoh kita memiliki potongan kode seperti berikut:
 
-<form th:action="@{/resep/add}" th:object="${menu}" method="POST">
-Artinya, pada tag form tersebut kita menyisipkan th:object="${menu}" sebagai tanda bahwa form tersebut menggunakan objek resep sebagai model untuk pengumpulan data formnya.
+<form th:action="@{/resep/add}" th:object="${resep}" method="POST">
+Artinya, pada tag form tersebut kita menyisipkan th:object="${resep}" sebagai tanda bahwa form tersebut menggunakan objek resep sebagai model untuk pengumpulan data formnya.
 
 
 **3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?**
