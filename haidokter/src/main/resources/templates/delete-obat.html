@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Add Obat</title>
+    <title>Delete Obat Succeed</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+
 </head>
 <body>
-<h2 th:text = "'Obat dengan id ' + ${obat.id}+ ' berhasil dihapus.'" ></h2>
-<a href="/resep/viewall">Kembali</a>
+<nav th:replace="fragments/fragment :: navbar('Delete Obat')"></nav>
+    <div class="container-fluid">
+        <h3 th:text="${obatCount} + ' obat telah berhasil dihapus'"></h3>
+        <a th:href="@{/}" class="btn btn-outline-success">Kembali</a>
+    </div>
 </body>
 </html>

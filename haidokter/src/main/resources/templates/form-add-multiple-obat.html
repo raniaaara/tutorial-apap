@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Add Multiple Obat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Form Add Multiple Obat')"></nav>
+<section>
+    <form th:action="@{/obat/add-multiple/} + ${resep.noResep}" th:object="${resep}" method="POST">
+        <table class="table">
+            <thead>
+            <th>Nama</th>
+            <th>Bentuk</th>
+            <th>Kuantitas</th>
+            <th>
+                <button class="btn btn-outline-success" type="submit" name="addRow">Add Row</button>
+            </th>
+            </thead>
+            <tbody>
+            <input type="hidden" th:field="${resep}"/>
+            <tr th:each="obat, iterationStatus : *{listObat}">
+                <td>
+                    <input type="text" th:field="*{listObat[__${iterationStatus.index}__].nama}" class="form-control"/>
+                </td>
+                <td>
+                    <select name="bentuk" th:field="*{listObat[__${iterationStatus.index}__].bentuk}"
+                            class="form-control">
+                        <option value="0">Kapsul</option>
+                        <option value="1">Table</option>
+                        <option value="2">Sirup</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" th:field="*{listObat[__${iterationStatus.index}__].kuantitas}"
+                           class="form-control"/>
+                </td>
+                <td>
+                    <button th:value="${iterationStatus.index}" class="btn btn-outline-danger" type="submit"
+                            name="deleteRow">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" name="save" class="btn btn-success">Submit</button>
+    </form>
+</section>
+</body>
+</html>

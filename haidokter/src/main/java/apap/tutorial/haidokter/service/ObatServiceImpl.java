@@ -40,4 +40,10 @@ public class ObatServiceImpl implements ObatService{
     public void deleteObat(ObatModel obat){
         obatDb.delete(obat);
     }
+
+    @Override
+    public void deleteObatById(Long id){
+        ObatModel obat = obatDb.findById(id).get();
+        obatDb.delete(obat);
+    }
 }

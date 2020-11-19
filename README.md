@@ -136,6 +136,48 @@ CascadeType.ALL digunakan agar segala (ALL) perubahan yang terjadi pada suatu en
 
 FetchType.EAGER memuat seluruh data Java objects yang di-fetch secara langsung, jadi ia melakukan fetch seawal mungkin. Biasanya, FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
 
+### What I did not understand :weary: :weary: :weary:
+- [ ]
+
+
+## Tutorial 4
+### What I have learned today :computer:
+
+**1. Jelaskan perbedaan th:include dan th:replace!**
+
+th:include dan th:replace merupakan salah dua bentuk dari host tag, di mana ke dua host tag ini akan mengimplementasikan bentuk fragment yang disediakan oleh Thymeleaf. Fragment adalah sebuah reuseable class yang mengimplement beberapa fitur sebuah Activity.
+
+Saat kita menggunakan include:
+
+<div th:include="..."> contoh </div> --> konten akan ditempatkan di dalam <div> tag.
+
+Saat kita menggunakan replace:
+
+<div th:replace="..."> contoh </div> --> maka <div> akan digantikan dengan konten yang ada.
+
+Thymeleaf dapat meng-include beberapa bagian dari halaman lain sebagai fragment menggunakan th:include (akan meng-include konten dari fragment ke host tag) atau th:replace (akan menggantikan host tag dengan fragment tersebut).
+
+
+**2. Jelaskan apa fungsi dari th:object!**
+
+th:object merupakan atribut yang menyimpan command object (bentuk dari bean object), yaitu bentuk representasi dari object yang berada pada backend. Dengan kata lain, th:object mereferensikan Model yang akan merepresentasikan state dari form yang dibuat. Contoh kita memiliki potongan kode seperti berikut:
+
+<form th:action="@{/resep/add}" th:object="${resep}" method="POST">
+Artinya, pada tag form tersebut kita menyisipkan th:object="${resep}" sebagai tanda bahwa form tersebut menggunakan objek resep sebagai model untuk pengumpulan data formnya.
+
+
+**3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?**
+
+Pada dasarnya, penggunaan * dan $ sama-sama digunakan untuk melakukan variable expression. Perbedannya terdapat jika * digunakan ketika melakukan expression pada selected object, bukan keseluruhan dari variable maps. Selama tidak ada object yang dipilih, maka * dan $ digunakan untuk hal yang sama.
+
+
+**4. Bagaimana kamu menyelesaikan latihan nomor 3?**
+
+Awalnya saya menambahkan atribut th:text pada elemen HTML dengan expression ${pageName}. Kemudian pada HTML yang mengimplementasikan fragment tersebut saya mengganti pageName dengan title halaman (home, add resep,dll) pada pemanggilan fragment navbar. 
+
+Contoh:
+<nav th:replace="fragments/fragment :: navbar('Delete Obat')"></nav>
+
 
 ### What I did not understand :weary: :weary: :weary:
 - [ ]
