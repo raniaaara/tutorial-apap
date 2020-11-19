@@ -1,6 +1,7 @@
 package apap.tutorial.haidokter.restcontroller;
 
 import apap.tutorial.haidokter.model.ResepModel;
+import apap.tutorial.haidokter.rest.ResepDetail;
 import apap.tutorial.haidokter.service.ResepRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -72,5 +74,19 @@ public class ResepRestController {
     }
 
     @GetMapping(value = "/reseps")
-    private List<ResepModel> retrieveListResep() {return resepRestService.retrieveListResep();}
+    private List<ResepModel> retrieveListResep() {
+        return resepRestService.retrieveListResep();
+    }
+
+    @GetMapping(value = "resep/{noResep}/status")
+    private Mono<String> getStatus(
+            @PathVariable Long noResep){
+        return resepRestService.getStatus(noResep);
+    }
+
+    @GetMapping(value = "/full")
+    private Mono<ResepDetail> postStatus(){
+        return resepRestService.postStatus();
+    }
+
 }

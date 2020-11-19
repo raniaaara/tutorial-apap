@@ -181,3 +181,30 @@ Contoh:
 
 ### What I did not understand :weary: :weary: :weary:
 - [ ]
+
+
+
+## Tutorial 5
+### What I have learned today :computer:
+
+**1. Apa itu Postman? Apa kegunaannya?**
+
+Postman merupakan development tool API yang digunakan untuk melakukan build, test, dan modify API. Dengan Postman, kita bisa mendesain, mock, debug, tes, mendokumentasikan, memonitor, dan menerbitkan API kita di satu tempat. Postman berfungsi sebagai REST Client dimana dapat digunakan untuk uji REST API. Ketika menggunakan Postman, untuk melakukan testing, kita tidak harus menulis HTTP client network code, tetapi membuat test suites yang dinamakan "Collections". Postman akan otomatis berinteraksi dengan API.
+
+
+**2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.**
+
+@JsonIgnoreProperties mengabaikan properti logis yang ditentukan dalam serialisasi dan deserialisasi JSON. Itu dijelaskan di tingkat kelas. Contohnya ketika kita memberikan true untuk elemen ignoreUnknown, maka dalam deserialization jika data JSON memiliki bidang yang tidak ada properti logis maka bidang JSON akan diabaikan dan tidak ada kesalahan akan dilemparkan. Sedangkan @JsonProperty merupakan anotasi yang berfungsi untuk mengubah nama variabel. @JsonProperty memberitahu Jackson ObjectMapper untuk memetakan nama property JSON ken ama bidang Java yang dianotasi.
+
+
+**3. Apa kegunaan atribut WebClient?**
+
+WebClient adalah sebuah interface yang disediakan oleh Spring Framework yang merupakan bagian dari reactive client dan berfungsi untuk poin akses utama dari web / HTTP requests. Modul ini berfungsi untuk menginstansiasi sebuah akses poin URL serta mengelola request dan response atas URL tersebut.
+
+
+**4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?**
+
+ResponseEntity mewakili respons HTTP, termasuk tajuk, isi, dan status. Sementara @ResponseBody menempatkan return value ke body dari response, ResponseEntity juga memungkinkan kita untuk menambahkan header dan kode status. Sedangkan BindingResult merupakan objek Spring yang menyimpan hasil dari validasi, binding, dan error atas model objek yang divalidasikan. BindingResult digunakan dengan diletakkan setelah parameter objek validasi.
+
+### What I did not understand :weary: :weary: :weary:
+- [ ]
