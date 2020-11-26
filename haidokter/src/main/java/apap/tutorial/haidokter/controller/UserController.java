@@ -20,19 +20,19 @@ import java.security.Principal;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @RequestMapping(value = "/add-user", method = RequestMethod.POST)
-    private String addUserSubmit(@ModelAttribute UserModel user, Model model){
-        String message = userService.addUser(user);
-        model.addAttribute("message", message);
-        return "redirect:/";
-    }
 //
 //    @RequestMapping(value = "/add-user", method = RequestMethod.POST)
-//    private RedirectView addUserSubmit(@ModelAttribute UserModel user, RedirectAttributes attributes) {
-//        attributes.addFlashAttribute("message", userService.addUser(user));
-//        return new RedirectView("/");
+//    private String addUserSubmit(@ModelAttribute UserModel user, Model model){
+//        String message = userService.addUser(user);
+//        model.addAttribute("message", message);
+//        return "redirect:/";
 //    }
+
+    @RequestMapping(value = "/add-user", method = RequestMethod.POST)
+    private String addUserSubmit(@ModelAttribute UserModel user, RedirectAttributes attributes) {
+        attributes.addFlashAttribute("message", userService.addUser(user));
+        return "redirect:/";
+    }
 
     @GetMapping(value = "/change-password")
     private String changePasswordForm(Model model){
