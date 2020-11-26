@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>View Resep</title>
@@ -27,7 +27,7 @@
     <section>
         <h2 th:text="${title}"></h2>
         <form th:action="@{/obat/delete}" th:object="${resep}" method="POST">
-            <div class="mb-3">
+            <div class="mb-3" sec:authorize="hasAuthority('APOTEKER')">
                 <a th:href="@{/obat/add/} + ${resep.noResep}"
                    class="btn btn-success">Add Obat</a>
                 <a th:href="@{/obat/add-multiple/} + ${resep.noResep}"
@@ -76,47 +76,6 @@
         </form>
     </section>
 </div>
-<!--<section>-->
-<!--    <h2>Informasi Resep</h2>-->
-<!--    <h3 th:text="'Nomor Resep: ' + ${resep.noResep}"></h3>-->
-<!--    <h3 th:text="'Nama Dokter: ' + ${resep.namaDokter}"></h3>-->
-<!--    <h3 th:text="'Nama Pasien: ' + ${resep.namaPasien}"></h3>-->
-<!--    <h3 th:text="'Catatan: ' + ${resep.catatan}"></h3>-->
-
-<!--    <td><a th:href="@{/resep/change/} + ${resep.noResep}">Change Resep</a></td>-->
-<!--    <td><a th:href="@{/resep/delete/} + ${resep.noResep}">Delete Resep</a></td>-->
-
-<!--</section>-->
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>No</th>-->
-<!--        <th>ID Obat</th>-->
-<!--        <th>Nama</th>-->
-<!--        <th>Bentuk</th>-->
-<!--        <th>Kuantitas</th>-->
-<!--        <th>Aksi</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="obat, iterationStatus : ${listObat}"-->
-<!--        th:style="${iterationStatus.even} ? 'font-weight:bold;'">-->
-
-<!--        <td th:text="{iterationStatus.count}"></td>-->
-<!--        <td th:text="{obat.id}"></td>-->
-<!--        <td th:text="{obat.nama}"></td>-->
-<!--        <td th:if="{obat.bentuk == 0}">Tablet</td>-->
-<!--        <td th:if="{obat.bentuk == 1}">Kapsul</td>-->
-<!--        <td th:if="{obat.bentuk == 2}">Sirup</td>-->
-<!--        <td th:text="{obat.kuantitas}"></td>-->
-<!--        <td>-->
-<!--            <a th:href="@{/obat/change/} + ${obat.id}">Change Obat</a>-->
-<!--            <a th:href="@{/obat/delete/} + ${obat.id}">Delete Obat</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    <td><a th:href="@{/obat/add/} + ${resep.noResep}">Add Obat</a></td>-->
-<!--    </tbody>-->
-<!--</table>-->
 
 </body>
 </html>
