@@ -208,3 +208,30 @@ ResponseEntity mewakili respons HTTP, termasuk tajuk, isi, dan status. Sementara
 
 ### What I did not understand :weary: :weary: :weary:
 - [ ]
+
+
+## Tutorial 6
+### What I have learned today :computer:
+
+**1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?**
+
+Otentikasi dilakukan untuk memverifikasi apakah seseorang itu adalah orang yang berhak. Biasanya melibatkan username dan password, tetapi dapat menyertakan metode lain yang dapat menunjukkan identitas seperti sidik jari. Sedangkan otorisasi merupakan pencarian apakah orang yang sudah diidentifikasi (diotentikasi), diperbolehkan untuk memanipulasi sumber daya tertentu. Pada tutorial ini konsep otentikasi diimplementasikan saat melakukan login pada url /login. Sedangkan, konsep otorisasi diimplementasikan ketika user telah berhasil masuk ke sistem dan sistem menampilkan fungsionalitas yang sesuai dengan kewenangan yang dimiliki oleh role masing-masing user (admin, apoteker, user)
+
+
+**2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerjanya!**
+
+BCryptPasswordEncoder merupakan algoritma hash password default untuk OpenBSD dan sistem lainnya, termasuk beberapa distribusi Linux seperti SUSE Linux. Awalan "$ 2a $" atau "$ 2b $" (atau "$ 2y $") dalam string hash dalam file kata kunci bayangan menunjukkan bahwa string hash adalah hash bcrypt dalam format kriptografi modular. Sisa dari string hash mencakup parameter biaya, salt 128 bit (basis-64 yang dikodekan sebagai 22 karakter), dan 184 bit dari nilai hash yang dihasilkan (basis-64 dikodekan sebagai 31 karakter). Cara kerjanya BCryptPasswordEncoder adalah saat kita membuat user baru dengan membuat username dan password baru, maka setelah kita klik 'save', maka password akan dienkripsi menggunakan fungsi BCrypt sehingga password yang terlihat pada database adalah password yang sudah dienkripsi.
+
+
+**3. Jelaskan secara singkat apa itu UUID beserta penggunaannya!**
+
+UUID (Universally Unique Identifier) merupakan kode identifikasi unik yang diberikan oleh sistem. UUID digunakan untuk memungkinkan sistem terdistribusi untuk secara unik mengidentifikasi informasi tanpa koordinasi pusat signifikan. Mirip seperti BCrypt, bedanya kali ini adalah ID, bukan password. Saat kita membuat user baru, sistem akan otomatis melakukan pemberian kode unik yang akan terlihat pada database dengan tipe UUID. Contoh penggunaan UUID pada tutorial ini adalah pada ID user, sehingga tidak ada user yang memiliki id yang sama. 
+
+
+**4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?**
+
+Class UserDetailsServiceImpl.java digunakan untuk memberikan informasi otentikasi dan otorisasi dari pengguna. Tujuannya adalah agar Spring Boot Security dapat melakukan proses otorisasi dan otentikasi pada akun pengguna sesuai dengan role yang telah diberikan saat pembuatan akun. Class ini harus ada karena class UserServiceImpl dan RoleServiceImpl tidak dapat memberikan informasi kepada Spring boot mengenai otentikasi dan otorisasi dari akun-akun yang ada pada database sistem.
+
+
+### What I did not understand :weary: :weary: :weary:
+- [ ]

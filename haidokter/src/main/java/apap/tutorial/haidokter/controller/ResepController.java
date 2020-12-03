@@ -22,12 +22,6 @@ public class ResepController {
     @Autowired
     private ObatService obatService;
 
-    @GetMapping("/")
-    private String home(){
-
-        return "home";
-    }
-
     @GetMapping("/resep/add")
     private String addResepFormPage(Model model){
         model.addAttribute("resep", new ResepModel());

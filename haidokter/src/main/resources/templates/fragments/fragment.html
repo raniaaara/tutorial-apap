@@ -39,10 +39,18 @@
                 Home<span class="sr-only">(current)</span>
             </a>
         </ul>
+        <ul class="navbar-nav mr-auto navbar navbar-default">
+            <a class="nav-item nav-link active" th:href="@{/user/change-password}">
+                Update Password<span class="sr-only">(current)</span>
+            </a>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
             <a th:text="${NamaPage}" class="nav-item nav-link active text-secondary" th:href="@{/}">
                 <span class="sr-only">(current)</span>
             </a>
+        </ul>
+        <ul class="navbar-nav pull-right">
+            <a class="nav-item nav-link active" th:href="@{/logout}">Logout</a>
         </ul>
     </div>
 </nav>
