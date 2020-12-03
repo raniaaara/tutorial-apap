@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -55,13 +54,13 @@ public class UserController {
         }
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(passwordEncoder.matches(oldPassword, user.getPassword())){
-            userService.changePassword(user, newPassword);
+            String s = userService.changePassword(user, newPassword);
+            model.addAttribute("warning", s);
         }
         else{
             model.addAttribute("warning", "Password lama anda salah!");
             return "change-password";
         }
-        model.addAttribute("warning", "Password berhasil diupdate!");
         return "change-password";
     }
 }
