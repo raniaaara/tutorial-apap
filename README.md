@@ -237,33 +237,52 @@ Class UserDetailsServiceImpl.java digunakan untuk memberikan informasi otentikas
 - [ ]
 
 
+
 ## Tutorial 7
 ### What I have learned today :computer:
 
 **1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.**
 
 Pada nomor 1, saya menambahkan validasi menggunakan if else untuk memeriksa apakah variabel checked bernilai true. Jika true, maka checkbox akan ditampilkan.
-![alt text](https://ibb.co/xS0Jjwz)
+
+![alt text](https://i.ibb.co/kgfQ8zq/message-Image-1606999253147.jpg
+
 
 Pada nomor 2, saya membuat fungsi clearItemClick yang akan menghapus semua item yang ada di list favItems.
-![alt text](https://ibb.co/CzkmP3G)
+
+![alt text](https://i.ibb.co/drdjmwY/message-Image-1606999638314.jpg)
+
 Kemudian saya membuat div yang memuat validasi bahwa button hanya ditampilkan jika terdapat item pada favItems beserta tag button yang dapat memanggil function clearItemClick setiap kali button di click.
-![alt text](https://ibb.co/0ZLSznr)
+
+![alt text](https://i.ibb.co/nfyvKwj/message-Image-1606999624089.jpg)
+
 
 Pada nomor 3, saya membuat fungsi yang hampir serupa dengan handleItemClick, yaitu handleFavClick, tetapi saya menghapus baris kondisi else setelah if agar saat item pada bagian kiri diklik, tidak akan terjadi splice atau penghapusan item yang telah menjadi favorit.
-![alt text](https://ibb.co/ft0VfDL)
+
+![alt text](https://i.ibb.co/1K2Y1zj/message-Image-1606999335518.jpg)
+
 
 Pada nomor 4, saya menambahkan toggle button dengan membuat state sebagai parameter yang memiliki nilai default false. 
-![alt text](https://ibb.co/p11t3Cq)
+
+![alt text](https://i.ibb.co/x22pMVZ/message-Image-1606999443912.jpg)
+
 Kemudian saya membuat function toggleButton yang memberikan nilai boolean berkebalikan dari state yang masuk ke function ini untuk menjalankan on/off dari toggle button. 
-![alt text](https://ibb.co/CJbHnKt)
+
+![alt text](https://i.ibb.co/0BCGfyX/message-Image-1606999479656.jpg)
+
 Lalu saya menampilkan toggle button dengan memberikannya fungsi untuk menjalankan toggleButton(). Apabila toggle bernilai true maka akan menampilkan list film favorit, sedangkan jika bernilai false maka tidak akan menampilkan list film favorit.
-![alt text](https://ibb.co/chySHrK)
+
+![alt text](https://i.ibb.co/5h1gyRX/message-Image-1606999505926.jpg)
+
 
 Pada nomor 5, saya membuat file baru berupa sebuah component yang saya beri nama Empty State dengan isi seperti pada gambar. 
-![alt text](https://ibb.co/9vL6k3Y)
+
+![alt text](https://i.ibb.co/W3wZ4pK/message-Image-1606999532166.jpg)
+
 Kemudian saya membuat sebuah variabel let dengan nama emptyState untuk menyimpan komponen tersebut. 
-![alt text](https://ibb.co/KG5F53g)
+
+![alt text](https://i.ibb.co/591B1f3/message-Image-1606999560670.jpg)
+
 Lalu saya memberikan kondisi di saat tidak ada item favorit, maka komponen emptyState akan dilemparkan menggunakan {emptyState}.
 
 
