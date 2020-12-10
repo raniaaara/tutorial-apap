@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
@@ -19,14 +21,21 @@ public class UserServiceImpl implements UserService{
 //    }
 
     @Override
-    public String changePassword(UserModel user, String password) {
-        if(validatePassword(password)){
-            String pass = encrypt(password);
-            user.setPassword(pass);
-            userDB.save(user);
-            return "password berhasil diubah";
+    public String addUser(UserModel user) {
+        String pass = user.getPassword();
+        List<UserModel> listUser = userDB.findAll();
+        for (UserModel i : listUser) {
+            if(i.getUsername().equals(user.getUsername())){
+                return "Username telah digunakan, silahkan ganti dengan username lain";
+            }
         }
-        return "password tidak sesuai dengan ketentuan";
+        if (validatePassword(pass)) {
+            String password = encrypt(user.getPassword());
+            user.setPassword(password);
+            userDB.save(user);
+            return "User berhasil ditambahkan";
+        }
+        return "Password tidak sesuai ketentuan";
     }
 
     @Override
@@ -50,25 +59,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String addUser(UserModel user) {
-        String pass = user.getPassword();
-        boolean numberFound = false;
-        boolean alphabetFound = false;
-        if (pass.length() >= 8){
-            for (char c : pass.toCharArray()) {
-                if(Character.isDigit(c)){
-                    numberFound = true;
-                }
-                if(Character.isAlphabetic(c)){
-                    alphabetFound = true;
-                }
-            }
-            if(numberFound && alphabetFound){
-                String password = encrypt(user.getPassword());
-                user.setPassword(password);
-                userDB.save(user);
-                return "User berhasil ditambahkan";
-            }
+    public String changePassword(UserModel user, String password) {
+        if(validatePassword(password)){
+            String pass = encrypt(password);
+            user.setPassword(pass);
+            userDB.save(user);
+            return "Password berhasil diubah";
         }
         return "Password tidak sesuai ketentuan";
     }
@@ -79,13 +75,6 @@ public class UserServiceImpl implements UserService{
         String hashedPassword = passwordEncoder.encode(password);
         return hashedPassword;
     }
-
-//    @Override
-//    public void changePassword(UserModel user, String password) {
-//        String pass = encrypt(password);
-//        user.setPassword(pass);
-//        userDB.save(user);
-//    }
 
     @Override
     public UserModel findUser(String user) {

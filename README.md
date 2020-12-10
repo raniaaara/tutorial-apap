@@ -235,3 +235,101 @@ Class UserDetailsServiceImpl.java digunakan untuk memberikan informasi otentikas
 
 ### What I did not understand :weary: :weary: :weary:
 - [ ]
+
+
+
+## Tutorial 7
+### What I have learned today :computer:
+
+**1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.**
+
+Pada nomor 1, saya menambahkan validasi menggunakan if else untuk memeriksa apakah variabel checked bernilai true. Jika true, maka checkbox akan ditampilkan.
+
+![alt text](https://i.ibb.co/kgfQ8zq/message-Image-1606999253147.jpg
+
+
+Pada nomor 2, saya membuat fungsi clearItemClick yang akan menghapus semua item yang ada di list favItems.
+
+![alt text](https://i.ibb.co/drdjmwY/message-Image-1606999638314.jpg)
+
+Kemudian saya membuat div yang memuat validasi bahwa button hanya ditampilkan jika terdapat item pada favItems beserta tag button yang dapat memanggil function clearItemClick setiap kali button di click.
+
+![alt text](https://i.ibb.co/nfyvKwj/message-Image-1606999624089.jpg)
+
+
+Pada nomor 3, saya membuat fungsi yang hampir serupa dengan handleItemClick, yaitu handleFavClick, tetapi saya menghapus baris kondisi else setelah if agar saat item pada bagian kiri diklik, tidak akan terjadi splice atau penghapusan item yang telah menjadi favorit.
+
+![alt text](https://i.ibb.co/1K2Y1zj/message-Image-1606999335518.jpg)
+
+
+Pada nomor 4, saya menambahkan toggle button dengan membuat state sebagai parameter yang memiliki nilai default false. 
+
+![alt text](https://i.ibb.co/x22pMVZ/message-Image-1606999443912.jpg)
+
+Kemudian saya membuat function toggleButton yang memberikan nilai boolean berkebalikan dari state yang masuk ke function ini untuk menjalankan on/off dari toggle button. 
+
+![alt text](https://i.ibb.co/0BCGfyX/message-Image-1606999479656.jpg)
+
+Lalu saya menampilkan toggle button dengan memberikannya fungsi untuk menjalankan toggleButton(). Apabila toggle bernilai true maka akan menampilkan list film favorit, sedangkan jika bernilai false maka tidak akan menampilkan list film favorit.
+
+![alt text](https://i.ibb.co/5h1gyRX/message-Image-1606999505926.jpg)
+
+
+Pada nomor 5, saya membuat file baru berupa sebuah component yang saya beri nama Empty State dengan isi seperti pada gambar. 
+
+![alt text](https://i.ibb.co/W3wZ4pK/message-Image-1606999532166.jpg)
+
+Kemudian saya membuat sebuah variabel let dengan nama emptyState untuk menyimpan komponen tersebut. 
+
+![alt text](https://i.ibb.co/591B1f3/message-Image-1606999560670.jpg)
+
+Lalu saya memberikan kondisi di saat tidak ada item favorit, maka komponen emptyState akan dilemparkan menggunakan {emptyState}.
+
+
+**2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?**
+
+Props merupakan singkatan dari Property. Props mirip seperti atrribute pada tag HTML. Dalam pembuatannya, jika dalam functional component, maka prop ini adalah parameternya. Jika componentnya dalam bentuk class, maka props ini property dari class nya yang di akses melalui keyword ‘this’.
+Sedangkan state merupakan data yang tersimpan dalam sebuah component. State bersifat private dan hanya relevan terhadap component itu sendiri. Berbeda dengan props yang valuenya dilempar dari component lain, state justru dapat menyimpan dan mengubah datanya dalam component itu sendiri.
+
+
+**3. Apa keuntungan menggunakan component (e.g. List, Item) di React? Berikan contohnya!**
+
+Keuntungan menggunakan component pada react adalah sifat re-usable yang dimilikinya. Setiap component, seperti Item dan List memiliki logika sendiri dan mengontrol proses renderingnya sendiri. Jika kita menggunakan komponen kita dapat menggunakan kode yang terdapat didalamnya kapan saja dan dimana saja dan dapat membantu kita dalam membuat aplikasi yang konsisten. Berikut contoh membuat component:
+
+- Membuat component dengan metode function-based
+```
+function Example(){
+    return <p>Example<p>;}
+}
+```
+
+- Membuat component dengan metode class-based
+```
+class Example extends React.Component{
+    render(){
+        return <p>Example<p>;
+    }
+}
+```
+
+Component tersebut dapat digunakan dengan memanggil "<Example />"
+
+
+**4. Menurut kamu, apa saja kelebihan menggunakan React dalam pengembangan web?**
+
+- Membuat aplikasi web dinamis menjadi lebih mudah.
+- Memiliki javasript library dimana terdapat banyak sekali library JavaScript yang mampu memberikan lebih banyak fleksibilitas kepada pengembang web untuk memilih seperti yang diinginkan.
+- Dapat meningkatkan kinerja menjadi lebih cepat dan lancar karena adanya DOM virtual.
+- Terdiri dari berbagai komponen yang dapat digunakan kembali ketika dibutuhkan.
+
+
+**5. Menurut kamu, apa saja kekurangan menggunakan React dalam pengembangan web?**
+
+- Hanya meng-handle view layer terluar saja, atau UI, sehingga harus memiliki beberapa teknologi lain dalam mengembangkan suatu proyek.
+- Performa yang terbatas atau tidak terlalu cepat.
+- Laju update atau pengembangan yang tinggi membuat React menjadi sulit untuk digunakan dalam jangka panjang karena selalu saja ada cara-cara baru untuk melakukan sesuatu.
+- Dokumentasi yang buruk karena laju pengembangan yang tinggi, sehingga dokumentasi yang tepat sulit untuk ditentukan.
+
+
+### What I did not understand :weary: :weary: :weary:
+- [ ]
