@@ -333,3 +333,76 @@ Component tersebut dapat digunakan dengan memanggil "<Example />"
 
 ### What I did not understand :weary: :weary: :weary:
 - [ ]
+
+
+## Tutorial 8
+### What I have learned today :computer:
+
+
+**1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?**
+
+Saya menambahkan beberapa baris kode pada event handleCancel untuk melakukan setState dengan kode seperti berikut:
+```
+ this.setState({ 
+     namaDokter: "", 
+     namaPasien: "", 
+     catatan: "",
+ });
+```
+Saya menggunakan langkah tersebut karena dengan mengganti state yang ada pada form tambah restoran menjadi string kosong, maka akan menjadikan value dari setiap form field tersebut seperti belum diisi.
+
+
+**2. Jelaskan fungsi dari async dan await!**
+
+async menyatakan fungsi asynchronous, yang berarti berfungsi untuk secara otomatis mengembalikan sebuah return value berupa objek dengan bentuk/tipe Promise, atau ditolak dengan uncaught errors dan dapat menggunakan keyword await.
+
+Sementara await berfungsi untuk memberi tahu program untuk keluar secara sementara dari fungsi async dan melanjutkan programnya ketika tugas yang diberikan telah selesai.
+
+
+**3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 8 pada Component Lifecycle pada pertanyaan ini.**
+
+![alt text](https://i.ibb.co/xYbW3dF/message-Image-1607583376021.jpg)
+![alt text](https://i.ibb.co/5cm5L89/h.jpg)
+![alt text](https://i.ibb.co/K2kKqcz/message-Image-1607583460325.jpg)
+![alt text](https://i.ibb.co/cbyzJDg/image.png)
+![alt text](https://i.ibb.co/HXWBz9M/image.png)
+![alt text](https://i.ibb.co/3MfZ4xY/image.png)
+![alt text](https://i.ibb.co/TYbmRL7/message-Image-1607583970600.jpg)
+![alt text](https://i.ibb.co/LxV2x1q/message-Image-1607658294958.jpg)
+![alt text](https://i.ibb.co/RBT2Yf3/message-Image-1607584000329.jpg)
+
+
+**4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount. Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.**
+
+componentDidMount:
+
+- Fungsi: Menandakan tahap akhir dari mounting lifecycle yang dipanggil setelah HTML yang dirender telah selesai melakukan loading.
+- Kapan dipanggil: Saat HTML telah selesai melakukan rendering. Selain itu, fungsi ini dapat digunakan saat React ingin mengambil data dari aplikasi eksternal seperti API dari website lain atau framework JavaScript. Setelah itu kita dapat menggunakan method setState() untuk memperbarui data yang didapat dan melakukan rendering dengan data yang baru.
+- Use case: Mengambil data (API) dari website lain untuk kemudian dirender.
+
+shouldComponentUpdate:
+
+- Fungsi: Memberi tahu React jika output dari komponen tidak terpengaruh oleh perubahan saat ini di dalam state dan props. Dengan kata lain, memberi tahu bahwa apakah komponen harus diperbarui atau tidak, dengan return value berupa boolean true or false dan dengan menerima parameter nextProps dan nextState.
+- Kapan dipanggil: Saat terdapat komponen yang diperbarui setelah berjalannya method componentWillReceiveProps, tetapi sebelum proses rendering dimulai.
+- Use case: Ingin mengubah komponen dan melakukan rendering kembali pada setiap state yang berubah.
+
+componentDidUpdate:
+
+- Fungsi: Untuk berinteraksi dengan sesuatu di luar environment React, seperti browser atau API.
+- Kapan dipanggil: Saat suatu instance di dalam suatu komponen melakukan update dan ketika HTML yang dirender telah selesai melakukan loading.
+- Use case: Melakukan update pada komponen 
+
+componentWillReceiveProps:
+
+- Fungsi: Memberi tahu React bahwa akan ada perubahan pada komponen yang memiliki props.
+- Kapan dipanggil: Saat suatu instance di dalam suatu komponen melakukan update dan sebelum proses rendering dimulai. Method ini hanya akan dipanggil saat komponen akan menerima props.
+- Use case: Melakukan reset state. 
+
+componentWillUnmount:
+
+- Fungsi: Melakukan pembersihan yang diperlukan dalam method ini, seperti timer yang tidak valid, membatalkan permintaan jaringan, atau membersihkan langganan apa pun yang dibuat di componentDidMount.
+- Kapan dipanggil: Ketika ada komponen yang ingin dihapus dari DOM, misalnya ketika DOM dirender ulang tanpa komponen atau pengguna berganti website atau menutup browsernya.
+- Use case: Menghapus interval waktu fungsi berjalan.
+
+### What I did not understand :weary: :weary: :weary:
+- [ ]

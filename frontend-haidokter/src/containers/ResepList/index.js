@@ -4,19 +4,24 @@ import classes from "./styles.module.css";
 import APIConfig from "../../api/APIConfig";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
-
+import SearchBar from "../../components/Searchbar";
 
 class ResepList extends Component {          
     constructor(props) {
         super(props);
         this.state = {
-            reseps: [],
+            filteredResep: [],
+            reseps:[],
             isLoading: false,
             isCreate: false,
             isEdit: false,
-            namaDokter: "",
-            namaPasien: "",
-            catatan: "",
+            isSearching: false,
+            input:"",
+            namaDokter:"",
+            namaPasien:"",
+            catatan:"",
+            currentPage: 1,
+            resepsPerPage: 5,
         };
         // this.handleClickLoading = this.handleClickLoading.bind(this);
         this.handleAddResep = this.handleAddResep.bind(this);
@@ -25,10 +30,22 @@ class ResepList extends Component {
         this.handleSubmitAddResep = this.handleSubmitAddResep.bind(this);
         this.handleEditResep = this.handleEditResep.bind(this);
         this.handleSubmitEditResep = this.handleSubmitEditResep.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
         this.loadData();
+    }
+
+    async findResep(text){
+        if(text === "") this.loadData();
+        else{
+            const filtered = this.state.reseps.filter(resep => {
+                return resep.namaDokter.toLowerCase().includes(text.toLowerCase())
+            })
+            this.setState({input: text});
+            this.setState({reseps: filtered});
+        }
     }
 
     async handleSubmitAddResep(event) {
@@ -125,25 +142,74 @@ class ResepList extends Component {
             console.log(error);
         }
     }
-        
 
+      // Pagination
+    handleClick(event) {
+        this.setState({
+        currentPage: Number(event.target.id),
+        });
+    }
+        
     render() {
+        const { reseps, currentPage, resepsPerPage } = this.state;
+
+        // Logic for displaying reseps
+        const indexOfLastResep = currentPage * resepsPerPage;
+        const indexOfFirstResep = indexOfLastResep - resepsPerPage;
+        const currentReseps = reseps.slice(indexOfFirstResep, indexOfLastResep);
+
+        const renderReseps = currentReseps.map((resep, index) => {
+        return (
+            <Resep
+            key={resep.noResep}
+            noResep={resep.noResep}
+            namaDokter={resep.namaDokter}
+            namaPasien={resep.namaPasien}
+            catatan={resep.catatan}
+            listObat={resep.listObat.map((obat) => (
+                <div key={obat.id}>{obat.nama} ({obat.kuantitas})</div>
+            ))}
+            handleEdit={() => this.handleEditResep(resep)}
+            handleDelete={() => this.handleDeleteResep(resep.noResep)}
+            />
+        );
+        });
+
+        // Logic for displaying page numbers
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(reseps.length / resepsPerPage); i++) {
+            pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map((number) => {
+            return (
+                <li key={number} id={number} onClick={this.handleClick}>
+                {number}
+                </li>
+            );          
+        });
+
         return (
             <div className={classes.resepList}>
                 <h1 className={classes.title}>All Reseps</h1>
                 <Button onClick={this.handleAddResep} variant="primary">Add Resep</Button>
+                <SearchBar handleChange={(e) => this.findResep(e.target.value)}/>
                 <div>
-                    {this.state.reseps.map((resep) => (
+                    {/* {this.state.reseps.map((resep) => (
                     <Resep
                         key={resep.noResep}
                         noResep={resep.noResep}
                         namaDokter={resep.namaDokter}
                         namaPasien={resep.namaPasien}
                         catatan={resep.catatan}
+                        listObat={resep.listObat.map((obat) => (
+                            <div key={obat.id}>{obat.nama} ({obat.kuantitas})</div>
+                        ))}
                         handleEdit={() => this.handleEditResep(resep)}
                         handleDelete={() => this.handleDeleteResep(resep.noResep)}
                     />
-                    ))}
+                    ))} */}
+                    {renderReseps}
                 </div>  
                 <Modal show={this.state.isCreate || this.state.isEdit} handleCloseModal={this.handleCancel}>
                     <form>
@@ -182,6 +248,9 @@ class ResepList extends Component {
                         </Button>
                     </form>
                 </Modal>
+                <ul className={classes.pageNumbers}>
+                    {renderPageNumbers}
+                </ul>
             </div>
         );        
     }

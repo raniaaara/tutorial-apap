@@ -2,9 +2,24 @@
     border-radius: 4px;
     background-color: white;
     border: 1px solid grey;
-    padding: 16px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-top: 0px;
     margin: 20px 0;
     box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
 }
+
+.obat {
+    border: none;
+    background-color: #346cce;
+    color: white;
+    border-radius: 15px;
+    padding: 8px 8px;
+    margin: 0px 0px 15px 4px;
+    font-size: 16px;
+    display: inline-block;
+}
+
 
     
